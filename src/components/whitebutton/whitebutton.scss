@@ -1,6 +1,5 @@
 @use "/src/styles/variables.scss" as *; 
 @use "/src/styles/functions.scss" as *;
-
 @use "../../styles/main.scss" as *;
 
 .whitebutton {
@@ -8,7 +7,7 @@
   align-items: center;
   justify-content: center;
 
-  font-size: px-to-rem(30);
+  font-size: px-to-rem(18);
   font-weight: $font-weight-black;
   color: $font-color-primary;
 
