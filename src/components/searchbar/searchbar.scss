@@ -1,0 +1,48 @@
+    @use "/src/styles/variables.scss" as *;
+    @use "/src/styles/functions.scss" as *;
+
+    .search-bar {
+    display: flex; 
+    height: 50px;
+    background: transparent;
+    border: px-to-rem(4) solid $accent-primary;
+    border-radius: px-to-rem(58);
+    padding: 9px;
+    width: min(90vw, px-to-rem(500));     
+    box-sizing: border-box;
+    overflow: visible; 
+    gap: px-to-rem(8);
+    }
+
+    .search-bar__input {
+    flex: 1 1 auto; 
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: px-to-rem(48);
+    height: aut;
+    padding: px-to-rem(1) px-to-rem(8);
+    font-size: px-to-rem(16);
+    color: $font-color-secondary;
+    outline: none;
+    line-height: 1.2;
+    }
+
+    .search-bar__input::placeholder {
+    color: rgba($font-color-secondary, 0.5);
+    font-weight: 600;
+    }
+
+
+    .search-bar > button,
+    .search-bar .go-button {
+    
+    right: -px-to-rem(52); 
+    transform: translateY(-50%);
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+    }
+
+    
