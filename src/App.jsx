@@ -2,6 +2,7 @@ import "./styles/main.scss";
 import Background from "./components/Background/background";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
+import AppRouter from "./router/Router";
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <>
       <Background />
       <Navbar />
-      
+      <AppRouter />
       {/* <Footer /> */}
     
 
