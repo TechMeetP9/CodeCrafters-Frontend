@@ -1,0 +1,132 @@
+    @use "../../styles/variables.scss" as *;
+    @use "../../styles/functions.scss" as *;
+
+    .event-form {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    background: linear-gradient(to bottom, $background-1, $background-2);
+    padding: 2rem;
+    border-radius: 1rem;
+    color: $font-color-primary;
+    font-family: $font-primary;
+
+    input,
+    textarea {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
+        padding: 0.8rem;
+        color: $font-color-primary;
+        font-size: 1rem;
+        font-family: $font-primary;
+
+        &:focus {
+        outline: none;
+        border-color: $accent-secondary;
+        box-shadow: 0 0 4px $accent-secondary;
+        transition: all 0.2s ease;
+        }
+
+        &::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+        }
+    }
+
+    textarea {
+        resize: none;
+        min-height: 120px;
+    }
+
+    figure {
+        width: 100%;
+        height: 220px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, 0.05);
+        margin: 0;
+
+        figcaption {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+        font-weight: $font-weight-light;
+        }
+
+        img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        margin-top: 1rem;
+
+        button {
+        padding: 0.6rem 1.5rem;
+        border: 2px solid $accent-secondary;
+        border-radius: 50px;
+        background: transparent;
+        color: $accent-secondary;
+        font-weight: $font-weight-semibold;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background: $accent-secondary;
+            color: $font-color-secondary;
+        }
+
+        &.erase {
+            border-color: $accent-third;
+            color: $accent-third;
+
+            &:hover {
+            background: $accent-third;
+            color: $font-color-secondary;
+            }
+        }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+        padding: 1rem;
+        gap: 1rem;
+
+        input,
+        textarea {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+        }
+
+        textarea {
+        min-height: 100px;
+        }
+
+        figure {
+        height: 180px;
+        }
+
+        .buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+
+        button {
+            width: 100%;
+        }
+        }
+    }
+    }
