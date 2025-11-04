@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "/src/styles/variables.scss" as *; 
 @use "/src/styles/functions.scss" as *;
 @use "../../styles/main.scss" as *;
@@ -19,7 +20,7 @@
 
   &:hover {
     transform: translateY(px-to-rem(-2));
-    color: lighten($font-color-primary, 10%); 
+    color: color.adjust($font-color-primary, $lightness: 10%);
   }
 
   &:active {
