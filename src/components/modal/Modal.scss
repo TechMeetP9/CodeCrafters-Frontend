@@ -1,0 +1,75 @@
+$overlay-bg: rgba(0, 0, 0, 0.5);
+$modal-bg: #fff;
+$modal-radius: 12px;
+$transition-speed: 0.25s;
+
+.modal-overlay {
+ position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); 
+  backdrop-filter: blur(6px);     
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.modal-content {
+  background: $modal-bg;
+  border-radius: $modal-radius;
+  padding: 2rem;
+  position: relative;
+  width: min(90%, 500px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: scale(0.9);
+  animation: popIn $transition-speed ease forwards;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.modal-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.modal-body {
+  font-size: 1rem;
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
