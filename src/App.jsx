@@ -16,7 +16,6 @@ function App() {
         <Header />
         <main>
           <Routes>
-            {/* ... otras rutas ... */}
             <Route path="/events/:id" element={<EventDetailPageWrapper />} />
           </Routes>
         </main>
