@@ -1,0 +1,81 @@
+@use "/src/styles/variables.scss" as *;
+@use "/src/styles/functions.scss" as *;
+
+
+.event-card {
+  width: 466px;
+  height: 335px;
+  background-color: $font-color-primary; // blanco
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .event-image {
+    width: 100%;
+    height: 44%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  .event-info {
+    flex: 1;
+    padding: 1rem;
+    font-family: $font-primary;
+    color: $font-color-secondary; // negro
+
+    .event-date {
+      font-weight: 400;
+      font-size: 19px;
+      margin: 0;
+    }
+
+    .event-title {
+      font-weight: 900;
+      font-size: 29px;
+      margin: 0.4rem 0;
+      line-height: 1.2;
+    }
+
+    .event-creator {
+      font-weight: 400;
+      font-size: 19px;
+      margin: 0.2rem 0 0.5rem 0;
+    }
+
+    .event-attendees {
+      font-weight: 600;
+      font-size: 17px;
+      margin: 0;
+      color: rgba($font-color-secondary, 0.8);
+    }
+  }
+
+  .event-buttons {
+    display: none; //change to flex when button is incerted
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1rem 1rem 1rem;
+
+  
+    button {
+      all: unset; 
+      cursor: pointer;
+    }
+  }
+}
+
