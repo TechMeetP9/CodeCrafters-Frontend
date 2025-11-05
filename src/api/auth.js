@@ -33,7 +33,7 @@ export async function login(credentials) {
     localStorage.setItem("token", data.token);
   }
 
-  return data;
+  return data.token;
 }
 
 export function logout() {
