@@ -1,7 +1,6 @@
-// Landing.jsx
 import React from "react"; 
 import "./landing.scss"; 
-import Background from "../../components/background/background"; 
+import Background from "../../components/Background/background"; 
 import Navbar from "../../components/navbar/navbar"; 
 import SearchBar from "../../components/searchbar/searchbar"; 
 import SignupButton from "../../components/signupbutton/signupbutton"; 

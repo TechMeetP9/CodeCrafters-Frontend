@@ -16,7 +16,7 @@
     });
 
     const [preview, setPreview] = useState(null);
-    const [error, setError] = useState(""); // solo un error a la vez
+    const [error, setError] = useState(""); 
     const [message, setMessage] = useState("");
 
     const handleChange = (e) => {
@@ -28,7 +28,7 @@
         } else {
         setFormData({ ...formData, [name]: value });
         }
-        setError(""); // limpiar error al modificar un campo
+        setError(""); 
         setMessage("");
     };
 
@@ -70,7 +70,7 @@
         }
         await createEvent(formDataToSend);
         handleErase();
-        navigate("/events");
+        navigate("/home");
         } catch (err) {
         console.error("Error creating event:", err);
         setMessage("Error creating event");
