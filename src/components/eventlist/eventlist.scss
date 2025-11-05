@@ -1,0 +1,28 @@
+@use "/src/styles/variables.scss" as *; 
+@use "/src/styles/functions.scss" as *;
+
+.event-list {
+ 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 2rem; 
+  margin: 1rem;
+
+  // Layout general
+  justify-items: center; 
+  align-items: start; 
+  margin: 1rem auto; 
+  padding: 2rem 1rem; 
+  background-color: transparent; 
+  
+  
+
+  // 💻 Responsivo (por si se ve en pantallas más pequeñas)
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); // 2 por fila en tablets
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr; // 1 por fila en móvil
+  }
+}
