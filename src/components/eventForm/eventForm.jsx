@@ -16,7 +16,7 @@
     });
 
     const [preview, setPreview] = useState(null);
-    const [error, setError] = useState(""); // solo un error a la vez
+    const [errors, setErrors] = useState({}); // Cambiado a objeto
     const [message, setMessage] = useState("");
 
     const handleChange = (e) => {
@@ -28,38 +28,40 @@
         } else {
         setFormData({ ...formData, [name]: value });
         }
-        setError(""); // limpiar error al modificar un campo
+        setErrors({}); // Limpiamos errores al cambiar
         setMessage("");
     };
 
     const validateForm = () => {
-        if (!formData.title.trim()) return "Title is required";
-        if (formData.title.length > 150) return "Title cannot exceed 150 characters";
+        const newErrors = {};
 
-        if (!formData.description.trim()) return "Description is required";
-        if (formData.description.length > 300) return "Description cannot exceed 300 characters";
+        if (!formData.title.trim()) newErrors.title = "Title is required";
+        else if (formData.title.length > 150) newErrors.title = "Title cannot exceed 150 characters";
 
-        if (!formData.event_date) return "Date is required";
-        if (!/^\d{4}-\d{2}-\d{2}$/.test(formData.event_date)) return "Incorrect date format";
+        if (!formData.description.trim()) newErrors.description = "Description is required";
+        else if (formData.description.length > 300) newErrors.description = "Description cannot exceed 300 characters";
 
-        if (!formData.event_time) return "Start time is required";
-        if (!/^([0-1]\d|2[0-3]):([0-5]\d)$/.test(formData.event_time)) return "Incorrect time format";
+        if (!formData.event_date) newErrors.event_date = "Date is required";
+        else if (!/^\d{4}-\d{2}-\d{2}$/.test(formData.event_date)) newErrors.event_date = "Incorrect date format";
 
-        if (!formData.duration.trim()) return "Duration is required";
-        if (formData.duration.length > 50) return "Duration cannot exceed 50 characters";
+        if (!formData.event_time) newErrors.event_time = "Start time is required";
+        else if (!/^([0-1]\d|2[0-3]):([0-5]\d)$/.test(formData.event_time)) newErrors.event_time = "Incorrect time format";
 
-        if (!formData.capacity) return "Capacity is required";
+        if (!formData.duration.trim()) newErrors.duration = "Duration is required";
+        else if (formData.duration.length > 50) newErrors.duration = "Duration cannot exceed 50 characters";
 
-        if (!formData.image) return "Image is required";
+        if (!formData.capacity) newErrors.capacity = "Capacity is required";
 
-        return "";
+        if (!formData.image) newErrors.image = "Image is required";
+
+        return newErrors;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const validationError = validateForm();
-        if (validationError) {
-        setError(validationError);
+        const validationErrors = validateForm();
+        if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors);
         return;
         }
 
@@ -88,7 +90,7 @@
         image: null,
         });
         setPreview(null);
-        setError("");
+        setErrors({});
         setMessage("");
     };
 
@@ -105,7 +107,7 @@
             value={formData.title}
             onChange={handleChange}
             />
-            {error && <p className="error">{error}</p>}
+            {errors.title && <p className="error">{errors.title}</p>}
 
             <label htmlFor="duration">Duration</label>
             <input
@@ -115,6 +117,7 @@
             value={formData.duration}
             onChange={handleChange}
             />
+            {errors.duration && <p className="error">{errors.duration}</p>}
 
             <label htmlFor="description">Event Description*</label>
             <textarea
@@ -123,6 +126,7 @@
             value={formData.description}
             onChange={handleChange}
             ></textarea>
+            {errors.description && <p className="error">{errors.description}</p>}
 
             <label htmlFor="event_date">Event Date*</label>
             <input
@@ -132,6 +136,7 @@
             value={formData.event_date}
             onChange={handleChange}
             />
+            {errors.event_date && <p className="error">{errors.event_date}</p>}
 
             <label htmlFor="event_time">Event Time*</label>
             <input
@@ -141,6 +146,7 @@
             value={formData.event_time}
             onChange={handleChange}
             />
+            {errors.event_time && <p className="error">{errors.event_time}</p>}
 
             <label htmlFor="capacity">Max Attendees*</label>
             <input
@@ -151,6 +157,7 @@
             onChange={handleChange}
             min="1"
             />
+            {errors.capacity && <p className="error">{errors.capacity}</p>}
 
             <label htmlFor="image">Event Image*</label>
             <input
@@ -160,6 +167,7 @@
             accept="image/*"
             onChange={handleChange}
             />
+            {errors.image && <p className="error">{errors.image}</p>}
 
             <figure>
             {preview ? (
