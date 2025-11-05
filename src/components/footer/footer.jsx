@@ -1,60 +1,71 @@
-import React from "react";
-import "./Footer.scss";
-import footerImg from "/src/assets/head.png";
-import facebook from "/src/assets/facebook.svg";
-import instagram from "/src/assets/instagram.svg";
+    import React from "react";
+    import "./Footer.scss";
+    import footerImg from "/src/assets/head.png";
+    import facebook from "/src/assets/facebook.svg";
+    import instagram from "/src/assets/instagram.svg";
 
-const Footer = () => {
-    return (
-        <footer className="footer">
-            <div className="footer__left">
-                <ul>
-                    <li>Your Account</li>
-                    <li>Sign Up</li>
-                    <li>Log in</li>
-                    <li>Help</li>
-                </ul>
-                <ul>
-                    <li>Discover</li>
-                    <li>Events</li>
-                    <li>Online</li>
-                    <li>Local Guides</li>
-                </ul>
-            </div>
+    const Footer = () => {
+        return (
+    <footer className="footer">
+    <nav className="footer__nav" aria-label="Footer navigation">
+        <section className="footer__links footer__links-account">
+        <h4>Your Account</h4>
+        <ul>
+            <li><a href="/account">Your Account</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/login">Log in</a></li>
+            <li><a href="/help">Help</a></li>
+        </ul>
+        </section>
 
-            <div className="footer__center">
-                <img src={footerImg} alt="Logo" className="footer__logo" />
-            </div>
+        <section className="footer__links footer__links-discover">
+        <h4>Discover</h4>
+        <ul>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/online">Online</a></li>
+            <li><a href="/local-guides">Local Guides</a></li>
+        </ul>
+        </section>
 
-            <div className="footer__right">
-                <p className="footer__follow">Follow us</p>
-                <div className="footer__icons">
-                    <a
-                        href="https://facebook.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <img
-                            src={facebook}
-                            alt="Facebook"
-                            className="footer__icon"
-                        />
-                    </a>
-                    <a
-                        href="https://instagram.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <img
-                            src={instagram}
-                            alt="Instagram"
-                            className="footer__icon"
-                        />
-                    </a>
-                </div>
-            </div>
-        </footer>
-    );
-};
+        <figure className="footer__logo-figure">
+        <a href="/" className="footer__logo-link">
+            <img src={footerImg} alt="Company Logo" className="footer__logo" />
+        </a>
+        </figure>
 
-export default Footer;
+        <section className="footer__social">
+        <p>Follow us</p>
+        <ul className="footer__social-list">
+            <li>
+            <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+            >
+                <img src={facebook} alt="" className="footer__icon" />
+            </a>
+            </li>
+            <li>
+            <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+            >
+                <img src={instagram} alt="" className="footer__icon" />
+            </a>
+            </li>
+        </ul>
+        </section>
+    </nav>
+
+    <address className="footer__copyright">
+        &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+    </address>
+    </footer>
+
+        );
+    };
+
+    export default Footer;

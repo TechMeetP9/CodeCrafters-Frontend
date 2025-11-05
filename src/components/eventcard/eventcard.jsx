@@ -3,28 +3,36 @@ import "./eventcard.scss";
 
 const EventCard = ({ eventImage, eventName, eventDate, eventTime, eventCreator, eventAttendees }) => {
   return (
-    <div className="event-card">
-      <div className="event-image">
-        <img
-          src={eventImage || "https://placehold.co/600x400"}
-          alt={eventName}
-        />
-      </div>
+<article className="event-card">
+  <figure className="event-image">
+    <img
+      src={eventImage || "https://placehold.co/600x400"}
+      alt={eventName || "Event image"}
+    />
+    <figcaption className="sr-only">{eventName}</figcaption>
+  </figure>
 
-      <div className="event-info">
-        <p className="event-date"> month
-          {eventDate},00h00CET {eventTime}
-        </p>
-        <h4 className="event-title"> Title of the Event{eventName}</h4>
-        <p className="event-creator">by {eventCreator}</p>
-        <p className="event-attendees">#{eventAttendees} attendees</p>
-      </div>
+  <div className="event-info">
+    <time className="event-date" dateTime={eventDate}>
+      {new Date(eventDate).toLocaleDateString(undefined, {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      })} • {eventTime} CET
+    </time>
+    <h3 className="event-title">{eventName || "Title of the Event"}</h3>
+    <p className="event-creator">by {eventCreator}</p>
+    <p className="event-attendees">
+      {eventAttendees} attendee{eventAttendees > 1 ? "s" : ""}
+    </p>
+  </div>
 
-      <div className="event-buttons">
-        <button className="btn-edit">Edit</button>
-        <button className="btn-erase">Erase</button>
-      </div>
-    </div>
+  <div className="event-actions">
+    <button className="btn btn-edit" type="button">Edit</button>
+    <button className="btn btn-erase" type="button">Erase</button>
+  </div>
+</article>
+
   );
 };
 

@@ -144,10 +144,10 @@
             </figure>
         )}
 
-        <div className="form-buttons">
+        <section className="form-buttons">
             <button type="button" className="save" onClick={handleSave}>Save</button>
             <button type="button" className="cancel" onClick={handleCancel}>Cancel</button>
-        </div>
+        </section>
         </form>
     );
     };

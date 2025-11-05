@@ -33,7 +33,7 @@ const EventList = () => {
   }, []);
 
   return (
-    <div className="event-list">
+    <section className="event-list">
       {events.map((event) => (
         <EventCard
           key={event.id}
@@ -45,7 +45,7 @@ const EventList = () => {
           eventAttendees={event.eventAttendees}
         />
       ))}
-    </div>
+    </section>
   );
 };
 

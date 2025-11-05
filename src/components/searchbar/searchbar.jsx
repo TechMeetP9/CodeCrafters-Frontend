@@ -13,7 +13,7 @@ const SearchBar = () => {
   
     return (
         <>
-      <div className="search-bar">
+      <section className="search-bar">
         <input
           type="text"
           placeholder="Event name"
@@ -32,7 +32,7 @@ const SearchBar = () => {
           className="search-bar__input"
         />
         
-      </div>
+      </section>
       <GoButton onClick={handleSearch} />
       </>
     );
