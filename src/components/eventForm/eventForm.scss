@@ -6,23 +6,24 @@
                 flex-direction: column;
                 align-items: center;
                 background-color: #433B53;
-                padding: 3rem 2rem;
-                border-radius: 4rem;
+                padding: clamp(2rem, 5vw, 4rem);
+                border-radius: 2rem;
                 color: $font-color-primary;
                 font-family: $font-primary;
                 width: 100%;
-                max-width: 1300px;
+                max-width: 1200px;
                 margin: 3rem auto;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 6px 26px rgba(0, 0, 0, 0.3);
 
                 &__fieldset {
                     display: flex;
                     flex-direction: column;
                     gap: 2rem;
-                    width: 80%;
+                    width: 90%;
                     max-width: 900px;
                     border: none;
                     align-items: stretch;
+
 
                     figure {
                         margin: 2rem auto;
@@ -42,12 +43,6 @@
                             font-weight: $font-weight-light;
                         }
 
-                        .error {
-                            color: red;
-                            font-size: 0.9rem;
-                            margin-top: 0.3rem;
-                            grid-column: span 2;
-                        }
 
 
                         img {
@@ -58,19 +53,23 @@
                     }
                 }
 
+
                 legend {
                     text-align: center;
-                    font-size: 2rem;
+                    font-size: clamp(1.6rem, 4vw, 2.5rem);
                     font-weight: $font-weight-bold;
-                    margin-bottom: 2rem;
+                    margin-bottom: clamp(1rem, 2vw, 2rem);
                     color: $accent-secondary;
                     letter-spacing: 0.5px;
                 }
 
+
+
                 label {
                     display: block;
                     font-weight: $font-weight-semibold;
-                    margin-bottom: 0.4rem;
+                    margin-bottom: 0.5rem;
+                    font-size: clamp(1.2rem, 2vw, 1.2rem);
                 }
 
                 input,
@@ -135,6 +134,16 @@
                         }
                     }
                 }
+
+                        .error {
+                            color:#ff4d4f;
+                            font-size: 1rem;
+                            margin-top: 0.25rem;
+                            grid-column: span 2;
+                            margin-bottom: 0.5rem;
+                        }
+                        
+                        
 
                 @media (max-width: 1024px) {
                     max-width: 70%;

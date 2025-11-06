@@ -1,39 +1,36 @@
 import React, { useEffect, useState } from "react";
-import EventCard from "../eventcard/eventcard"; 
+import EventCard from "../eventcard/eventcard";
+import { getAllEvents } from "../../api/events"; 
 import "./eventlist.scss";
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    // 🔹 Aquí más adelante pondrás el fetch al backend. 
-    // Por ahora usamos datos de ejemplo:
-    const mockEvents = [
-      {
-        id: 1,
-        eventImage: "https://picsum.photos/300/150?random=1",
-        eventName: "Diseño y Creatividad 2025",
-        eventDate: "Noviembre 12-13",
-        eventTime: "18h00 CET",
-        eventCreator: "Gabi",
-        eventAttendees: 120,
-      },
-      {
-        id: 2,
-        eventImage: "https://picsum.photos/300/150?random=2",
-        eventName: "Networking para Diseñadores",
-        eventDate: "Diciembre 5",
-        eventTime: "19h00 CET",
-        eventCreator: "Berlin Design Hub",
-        eventAttendees: 80,
-      },
-    ];
+    const fetchEvents = async () => {
+      try {
+        const data = await getAllEvents();
+        setEvents(data);
+      } catch (err) {
+        console.error("Error fetching events:", err);
+        setError("Could not load events. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    setEvents(mockEvents);
+    fetchEvents();
   }, []);
 
+  if (loading) return <p className="eventlist__status">Loading events...</p>;
+  if (error) return <p className="eventlist__status error">{error}</p>;
+  if (events.length === 0)
+    return <p className="eventlist__status">No events available yet.</p>;
+
   return (
-    <div className="event-list">
+    <section className="event-list">
       {events.map((event) => (
         <EventCard
           key={event.id}
@@ -45,7 +42,7 @@ const EventList = () => {
           eventAttendees={event.eventAttendees}
         />
       ))}
-    </div>
+    </section>
   );
 };
 

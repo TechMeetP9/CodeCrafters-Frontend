@@ -1,0 +1,81 @@
+    @use "../../styles/variables.scss" as *;
+    @use "../../styles/functions.scss" as *;
+
+    .user-card {
+    background-color: $background-card; 
+    color: $font-color-primary;
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 300px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        border: 2px solid $accent-secondary;
+        }
+
+        h2 {
+        margin: 0.5rem 0;
+        font-size: 1.5rem;
+        font-weight: $font-weight-bold;
+        }
+
+        p {
+        margin: 0;
+        font-size: 1rem;
+        opacity: 0.8;
+        font-weight: $font-weight-regular;
+        }
+    }
+
+    .user-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.5rem;
+
+        button {
+        flex: 1;
+        margin: 0 0.25rem;
+        padding: 0.8rem;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        font-weight: $font-weight-semibold;
+        transition: all 0.2s ease;
+
+        &:first-child {
+            background-color: $accent-secondary;
+            color: $font-color-secondary;
+
+            &:hover {
+            background-color: $accent-third;
+            }
+        }
+
+        &:last-child {
+            background-color: $accent-third;
+            color: $font-color-secondary;
+
+            &:hover {
+            background-color: darken($accent-third, 10%);
+            }
+        }
+        }
+    }
+
+    @media (max-width: 768px) {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+    }
