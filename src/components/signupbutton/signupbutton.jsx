@@ -1,13 +1,21 @@
 import React from "react";
 import "./signupbutton.scss";
 
-const Signupbutton = ({ text = "Sign Up", onClick }) => {
+const SignupButton = ({
+  children = "Sign up",
+  variant = "primary",
+  onClick,
+  type = "button",
+}) => {
   return (
-    <button className="signupbutton" onClick={onClick}>
-      {text}
+    <button
+      type={type}
+      className={`signupbutton signupbutton--${variant}`}
+      onClick={onClick}
+    >
+      {children}
     </button>
   );
 };
 
-export default Signupbutton;
-
+export default SignupButton;
