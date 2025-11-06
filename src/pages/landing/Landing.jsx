@@ -8,7 +8,6 @@ import EventList from "../../components/eventlist/eventlist";
 import Footer from "../../components/footer/footer"; 
 import Whitebutton from "../../components/whitebutton/whitebutton";
 import ColorCard from "../../components/colorcard/colorcard";
-
 import bgImage from "../../assets/Card1.png";
 import iconSvg from "../../assets/fire.svg"; 
 import bgImage3 from "../../assets/Cardgreen.png";
@@ -52,7 +51,7 @@ const Landing = () => {
           </div>
         </section>
 
-        {/* ===== Color Cards Section (About Us Target) ===== */}
+        
         <section id="about-us" className="cards-section">
           <div className="cards-section__wrapper">
             <div className="cards-section__row">
