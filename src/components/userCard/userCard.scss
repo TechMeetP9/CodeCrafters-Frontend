@@ -1,74 +1,80 @@
+    @use "sass:color";
     @use "../../styles/variables.scss" as *;
     @use "../../styles/functions.scss" as *;
 
     .user-card {
-    background-color: $background-card; 
-    color: $font-color-primary;
-    border-radius: 1rem;
+    max-width: 600px;
+    margin: 4rem auto;
     padding: 2rem;
-    max-width: 300px;
-    width: 100%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
 
-    header {
+    &__header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        gap: 1rem;
+    }
 
-        img {
+    &__img {
         width: 120px;
         height: 120px;
         border-radius: 50%;
         object-fit: cover;
-        margin-bottom: 1rem;
-        border: 2px solid $accent-secondary;
-        }
+        border: 2px solid $accent-card;
+    }
 
+    &__info {
         h2 {
-        margin: 0.5rem 0;
         font-size: 1.5rem;
-        font-weight: $font-weight-bold;
+        font-weight: 600;
+        color: $font-color-primary;
         }
 
-        p {
-        margin: 0;
+        .username {
         font-size: 1rem;
-        opacity: 0.8;
-        font-weight: $font-weight-regular;
+        color: $font-color-secondary;
+        }
+
+        .email {
+        font-size: 0.9rem;
+        color: rgba(0, 0, 0, 0.6);
         }
     }
 
-    .user-actions {
+    &__actions {
         display: flex;
-        justify-content: space-between;
-        margin-top: 1.5rem;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
 
-        button {
-        flex: 1;
-        margin: 0 0.25rem;
-        padding: 0.8rem;
-        border-radius: 50px;
+        .btn {
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
         border: none;
         cursor: pointer;
-        font-weight: $font-weight-semibold;
+        font-weight: 500;
         transition: all 0.2s ease;
 
-        &:first-child {
-            background-color: $accent-secondary;
-            color: $font-color-secondary;
+        &.edit {
+            background-color: $accent-card;
+            color: white;
 
             &:hover {
-            background-color: $accent-third;
+            background-color: color.adjust($accent-card, $lightness: -5%);
             }
         }
 
-        &:last-child {
-            background-color: $accent-third;
-            color: $font-color-secondary;
+        &.delete {
+            background-color: #f15b5b;
+            color: white;
 
             &:hover {
-            background-color: darken($accent-third, 10%);
+            background-color: color.adjust(#f15b5b, $lightness: -10%);
             }
         }
         }
@@ -76,6 +82,67 @@
 
     @media (max-width: 768px) {
         max-width: 90%;
+        margin: 2rem auto;
         padding: 1.5rem;
+
+        &__img {
+        width: 90px;
+        height: 90px;
+        }
+
+        &__info {
+        h2 {
+            font-size: 1.2rem;
+        }
+
+        .username {
+            font-size: 0.9rem;
+        }
+
+        .email {
+            font-size: 0.8rem;
+        }
+        }
+
+        &__actions {
+        flex-direction: column;
+        gap: 0.8rem;
+
+        .btn {
+            width: 100%;
+            font-size: 0.9rem;
+            padding: 0.8rem;
+        }
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        max-width: 80%;
+        padding: 2rem;
+
+        &__img {
+        width: 100px;
+        height: 100px;
+        }
+
+        &__info {
+        h2 {
+            font-size: 1.4rem;
+        }
+
+        .username {
+            font-size: 1rem;
+        }
+
+        .email {
+            font-size: 0.85rem;
+        }
+        }
+
+        &__actions {
+        .btn {
+            padding: 0.7rem 1.4rem;
+        }
+        }
     }
     }

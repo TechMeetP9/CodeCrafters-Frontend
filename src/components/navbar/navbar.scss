@@ -11,36 +11,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   z-index: 10;
 
   &__brand {
     display: flex;
     align-items: center;
     gap: px-to-rem(12);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 
     .navbar__logo {
+      display: block;
       height: px-to-rem(100);
       width: auto;
+      background: transparent;
     }
+
     &:hover {
-        transform: translateY(px-to-rem(-2));
-      }
-    
-      &:active {
-        transform: translateY(0);
-      }
+      transform: translateY(px-to-rem(-2));
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
   }
 
   &__menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     gap: px-to-rem(28); 
+
     .signupbutton {
       margin-left: px-to-rem(8);
       margin-right: px-to-rem(95);
     }
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -53,4 +64,110 @@
     opacity: 0.6;
   }
 
+  &__user {
+    position: relative;
+
+    .navbar__avatar {
+      width: px-to-rem(50);
+      height: px-to-rem(50);
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid $accent-card;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 px-to-rem(8) rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    .navbar__dropdown {
+      position: absolute;
+      right: 0;
+      top: px-to-rem(60);
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: px-to-rem(10);
+      box-shadow: 0 px-to-rem(4) px-to-rem(12) rgba(0, 0, 0, 0.1);
+      padding: px-to-rem(10);
+      display: flex;
+      flex-direction: column;
+      gap: px-to-rem(5);
+      z-index: 100;
+
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: px-to-rem(8) px-to-rem(12);
+        text-align: left;
+        font-size: px-to-rem(14);
+
+        &:hover {
+          background: $accent-card;
+          color: white;
+          border-radius: px-to-rem(6);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px) { 
+    padding: px-to-rem(16) px-to-rem(32);
+
+    .navbar__logo {
+      height: px-to-rem(80);
+    }
+
+    &__menu {
+      gap: px-to-rem(16);
+
+      .signupbutton {
+        margin-right: px-to-rem(32);
+      }
+    }
+  }
+
+  @media (max-width: 768px) { 
+    flex-direction: column;
+    align-items: center;
+    padding: px-to-rem(16);
+
+    &__brand {
+      justify-content: center;
+
+      .navbar__logo {
+        height: px-to-rem(70);
+      }
+    }
+
+    &__menu {
+      flex-direction: column;
+      gap: px-to-rem(12);
+      margin-top: px-to-rem(10);
+
+      .signupbutton {
+        margin: 0;
+      }
+    }
+
+    &::after {
+      bottom: px-to-rem(10);
+      opacity: 0.4;
+    }
+
+    &__user {
+      margin-top: px-to-rem(10);
+
+      .navbar__avatar {
+        width: px-to-rem(45);
+        height: px-to-rem(45);
+      }
+
+      .navbar__dropdown {
+        top: px-to-rem(50);
+        right: -px-to-rem(10);
+      }
+    }
+  }
 }

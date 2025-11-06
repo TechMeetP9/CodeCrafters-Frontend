@@ -1,4 +1,5 @@
     import { useState } from "react";
+    import "./userEditForm.scss";
 
     const UserEditForm = ({ user, onSave, onCancel }) => {
     const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@
         profileImage: null,
     });
 
-    const [preview, setPreview] = useState(user.profileImage || null);
+    const [preview, setPreview] = useState(user.profile_image_url || user.profileImage || null);
     const [errors, setErrors] = useState({});
     const [messages, setMessages] = useState({});
 
@@ -33,68 +34,47 @@
     };
 
     const validateName = (value) => {
-        if (!value.trim()) {
-        setErrors((prev) => ({ ...prev, name: "Enter name" }));
-        setMessages((prev) => ({ ...prev, name: "" }));
-        } else if (value.length > 50) {
-        setErrors((prev) => ({ ...prev, name: "Cannot exceed 50 characters" }));
-        setMessages((prev) => ({ ...prev, name: "" }));
-        } else {
-        setErrors((prev) => ({ ...prev, name: "" }));
-        setMessages((prev) => ({ ...prev, name: "Name looks good" }));
-        }
+        if (!value.trim()) setErrors((p) => ({ ...p, name: "Enter name" }));
+        else if (value.length > 50) setErrors((p) => ({ ...p, name: "Cannot exceed 50 characters" }));
+        else setErrors((p) => ({ ...p, name: "" }));
     };
 
     const validateUsername = (value) => {
-        if (!value.trim()) {
-        setErrors((prev) => ({ ...prev, username: "Enter username" }));
-        setMessages((prev) => ({ ...prev, username: "" }));
-        } else if (value.length > 30) {
-        setErrors((prev) => ({ ...prev, username: "Cannot exceed 30 characters" }));
-        setMessages((prev) => ({ ...prev, username: "" }));
-        } else {
-        setErrors((prev) => ({ ...prev, username: "" }));
-        setMessages((prev) => ({ ...prev, username: "Username looks good" }));
-        }
+        if (!value.trim()) setErrors((p) => ({ ...p, username: "Enter username" }));
+        else if (value.length > 30) setErrors((p) => ({ ...p, username: "Cannot exceed 30 characters" }));
+        else setErrors((p) => ({ ...p, username: "" }));
     };
 
     const validateEmail = (value) => {
-        if (!value.trim()) {
-        setErrors((prev) => ({ ...prev, email: "Enter Email" }));
-        setMessages((prev) => ({ ...prev, email: "" }));
-        } else if (value.length > 100) {
-        setErrors((prev) => ({ ...prev, email: "Cannot exceed 100 characters" }));
-        setMessages((prev) => ({ ...prev, email: "" }));
-        } else {
-        setErrors((prev) => ({ ...prev, email: "" }));
-        setMessages((prev) => ({ ...prev, email: "Email looks good" }));
-        }
+        if (!value.trim()) setErrors((p) => ({ ...p, email: "Enter email" }));
+        else if (value.length > 100) setErrors((p) => ({ ...p, email: "Cannot exceed 100 characters" }));
+        else setErrors((p) => ({ ...p, email: "" }));
     };
 
     const validatePassword = (value) => {
-        if (!value.trim()) {
-        setErrors((prev) => ({ ...prev, password: "Enter password" }));
-        setMessages((prev) => ({ ...prev, password: "" }));
-        } else if (value.length > 10) {
-        setErrors((prev) => ({ ...prev, password: "Cannot exceed 10 characters" }));
-        setMessages((prev) => ({ ...prev, password: "" }));
-        } else {
-        setErrors((prev) => ({ ...prev, password: "" }));
-        setMessages((prev) => ({ ...prev, password: "Password looks good" }));
-        }
+        if (value && value.length > 10)
+        setErrors((p) => ({ ...p, password: "Cannot exceed 10 characters" }));
+        else setErrors((p) => ({ ...p, password: "" }));
     };
 
     const handleSave = () => {
         if (Object.values(errors).some((err) => err)) {
-        setMessages({ ...messages, form: "Fix errors before saving!" });
+        setMessages({ form: "Fix errors before saving!" });
         return;
         }
 
-        const dataToSave = { ...formData };
-        if (!dataToSave.password) delete dataToSave.password;
+        const formToSend = new FormData();
+        formToSend.append("name", formData.name);
+        formToSend.append("username", formData.username);
+        formToSend.append("email", formData.email);
+        if (formData.password) formToSend.append("password", formData.password);
+        if (formData.profileImage) formToSend.append("profile_image", formData.profileImage);
 
-        onSave(dataToSave);
-        setPreview(formData.profileImage ? URL.createObjectURL(formData.profileImage) : user.profileImage);
+        onSave(formToSend);
+
+        if (formData.profileImage) {
+        setPreview(URL.createObjectURL(formData.profileImage));
+        }
     };
 
     const handleCancel = () => {
@@ -105,7 +85,7 @@
         password: "",
         profileImage: null,
         });
-        setPreview(user.profileImage || null);
+        setPreview(user.profile_image_url || null);
         setErrors({});
         setMessages({});
         onCancel && onCancel();
@@ -118,22 +98,18 @@
         <label htmlFor="name">Name*</label>
         <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
         {errors.name && <p className="error">{errors.name}</p>}
-        {!errors.name && messages.name && <p className="success">{messages.name}</p>}
 
         <label htmlFor="username">Username*</label>
         <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} />
         {errors.username && <p className="error">{errors.username}</p>}
-        {!errors.username && messages.username && <p className="success">{messages.username}</p>}
 
         <label htmlFor="email">Email*</label>
         <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
         {errors.email && <p className="error">{errors.email}</p>}
-        {!errors.email && messages.email && <p className="success">{messages.email}</p>}
 
-        <label htmlFor="password">Password*</label>
+        <label htmlFor="password">Password (optional)</label>
         <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
         {errors.password && <p className="error">{errors.password}</p>}
-        {!errors.password && messages.password && <p className="success">{messages.password}</p>}
 
         <label htmlFor="profileImage">Profile Image</label>
         <input type="file" id="profileImage" name="profileImage" accept="image/*" onChange={handleChange} />

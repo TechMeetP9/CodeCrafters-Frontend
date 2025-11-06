@@ -1,10 +1,9 @@
-import { fetchWithAuth, API_BASE_URL } from "./config";
+import { API_BASE_URL } from "./config";
 
 export async function register(userData) {
   const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(userData),
+    body: userData,
   });
 
   if (!response.ok) {
@@ -12,7 +11,12 @@ export async function register(userData) {
     throw new Error(error.message || "Error registering user");
   }
 
-  return response.json();
+  const data = await response.json();
+
+  return {
+    token: data.token,
+    user: data.user,
+  };
 }
 
 export async function login(credentials) {
@@ -28,12 +32,25 @@ export async function login(credentials) {
   }
 
   const data = await response.json();
+  return {
+    token: data.token,
+    user: data.user,
+  };
+}
 
-  if (data.token) {
-    localStorage.setItem("token", data.token);
+export async function getUserByToken(token) {
+  const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch user");
   }
 
-  return data.token;
+  return response.json();
 }
 
 export function logout() {

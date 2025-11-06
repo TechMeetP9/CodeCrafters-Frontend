@@ -1,26 +1,15 @@
-import React, { useState } from 'react'
-import Modal from '../modal/Modal'
+import React, { useState, useContext } from "react";
+import Modal from "../modal/Modal";
+import { login } from "../../api/auth";
+import { UserContext } from "../../context/userContext";
+import "./Login.scss";
 
-function Login({ isOpen, onClose, onLoginSuccess }) {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
-
-    const loginUser = async (email, password) => {
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-
-    if (!response.ok) {
-      const error = await response.json().catch(() => ({}));
-      throw new Error(error.message || "Login failed");
-    }
-
-    return response.json(); 
-  };
+function Login({ isOpen, onClose }) {
+  const { setCurrentUser } = useContext(UserContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,9 +17,9 @@ function Login({ isOpen, onClose, onLoginSuccess }) {
     setLoading(true);
 
     try {
-      const data = await loginUser(email, password);
-      localStorage.setItem("token", data.token);
-      if (onLoginSuccess) onLoginSuccess(data.user);
+      const { token, user } = await login({ email, password });
+      localStorage.setItem("token", token);
+      setCurrentUser(user);
       onClose();
     } catch (err) {
       setError(err.message || "Invalid credentials");
@@ -39,13 +28,9 @@ function Login({ isOpen, onClose, onLoginSuccess }) {
     }
   };
 
-
   return (
-    <Modal 
-      isOpen={isOpen} 
-      onClose={onClose} 
-      title="Login">
-        <form className="login-form" onSubmit={handleLogin}>
+    <Modal isOpen={isOpen} onClose={onClose} title="Login">
+      <form className="login-form" onSubmit={handleLogin}>
         {error && <p className="error-msg">{error}</p>}
 
         <label>
@@ -72,10 +57,8 @@ function Login({ isOpen, onClose, onLoginSuccess }) {
           {loading ? "Logging in..." : "Login"}
         </button>
       </form>
-
     </Modal>
-    
-  )
+  );
 }
 
-export default Login
+export default Login;
