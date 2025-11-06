@@ -50,11 +50,20 @@
   height: auto;
 }
 
+/* ===== EVENTS SECTION ===== */
 .events {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
+  gap: 1rem; // espacio entre el botón y la caja
+}
+
+/* botón fuera de la caja y a la derecha */
+.events__header {
+  width: 100%;
+  max-width: 1000px; // 🟩 cambia este valor (por ej. 1200px) para hacer más ancha la caja del frame
+  display: flex;
+  justify-content: flex-end;
 }
 
 .events__see-all {
@@ -77,7 +86,22 @@
   }
 }
 
+/* caja que envuelve el EventList */
+.events__card {
+  width: 100%;
+  max-width: 1600px;             // 🟩 cambia este valor (por ej. 1200px) para hacer la caja más ancha
+  border: 4px solid $accent-card; // 🟩 cambia el 4px para ajustar el grosor del marco rosa
+  background-color: transparent;  // transparente por dentro
+  border-radius: 2rem;
+  padding: 1.5rem;                // 🟩 aumenta este valor (por ej. 3rem) para más espacio interno
+}
 
+/* dentro va el grid de eventos */
+.events__grid {
+  width: 100%;
+}
+
+/* ===== CARDS SECTION ===== */
 .cards-section {
   display: flex;
   flex-direction: column;
@@ -91,9 +115,9 @@
   gap: 1.75rem;
   background-color: rgba($accent-card, 0.65); 
   border-radius: 2rem;
-  padding: 2rem;
+  padding: 2rem;               // 🟩 aumenta este valor (por ej. 3rem) para que sea igual que el de .events__card
   width: 100%;
-  max-width: 1000px;
+  max-width: 1600px;           // 🟩 cambia este valor (por ej. 1200px) para que ambas cajas tengan el mismo ancho
 }
 
 .cards-section__row {
@@ -139,13 +163,22 @@
   }
 }
 
-
+/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .cards-section__row {
     flex-direction: column;
   }
 
   .cards-section__row .color-card {
+    max-width: 100%;
+  }
+
+  .events__header {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .events__card {
     max-width: 100%;
   }
 }
