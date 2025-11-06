@@ -5,7 +5,7 @@
 .event-card {
   width: 466px;
   height: 335px;
-  background-color: $font-color-primary; // blanco
+  background-color: $font-color-primary; 
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -65,7 +65,7 @@
   }
 
   .event-buttons {
-    display: none; //change to flex when button is incerted
+    display: none; 
     justify-content: flex-end;
     align-items: center;
     gap: 0.5rem;

@@ -26,11 +26,11 @@ function Event() {
         const eventData = await getEventById(id);
         setEvent(eventData);
 
-        // fetch attendees
+        
         const attendeeList = await getEventAttendees(id);
         setAttendees(attendeeList);
 
-        // check if current user is attending (assuming backend returns `user_id`)
+        
         const userId = localStorage.getItem("userId");
         if (attendeeList.some((a) => a.user_id === userId)) {
           setIsAttending(true);
