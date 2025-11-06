@@ -16,7 +16,7 @@
     });
 
     const [preview, setPreview] = useState(null);
-    const [error, setError] = useState(""); 
+    const [errors, setErrors] = useState({}); 
     const [message, setMessage] = useState("");
 
     const handleChange = (e) => {
@@ -28,7 +28,7 @@
         } else {
         setFormData({ ...formData, [name]: value });
         }
-        setError(""); // limpiar error al modificar un campo
+        setErrors({}); 
         setMessage("");
     };
 
