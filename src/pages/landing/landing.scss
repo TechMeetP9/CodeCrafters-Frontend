@@ -3,61 +3,61 @@
 @use "../../styles/main.scss" as *;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+.landing { 
+  position: relative; 
+  min-height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
+  background: transparent; 
+}
 
+.landing__content { 
+  width: min(1200px, 100% - 3rem); 
+  margin: 0 auto; 
+  padding-top: 6.5rem; 
+  padding-bottom: 4rem; 
+  z-index: 1; 
+}
 
-.landing { // // contenedor raíz de la landing
-    position: relative; // // para que los hijos posicionados relativos/absolutos se acomoden bien
-    min-height: 100vh; // // que ocupe al menos el alto de la pantalla
-    display: flex; // // usamos flex para estructurar vertical
-    flex-direction: column; // // los hijos uno debajo de otro
-    background: transparent; // // el fondo real lo pone <Background />
-  }
-  
-  .landing__content { // // contenedor principal (todo menos el footer)
-    width: min(1200px, 100% - 3rem); // // centramos y limitamos el ancho
-    margin: 0 auto; // // centrado horizontal
-    padding-top: 6.5rem; // // dejamos espacio para el navbar y el hero
-    padding-bottom: 4rem; // // separación inferior antes del footer
-    z-index: 1; // // para que quede por encima del background
-  }
-  
-  .hero {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 80vh; //yet not sure what this is
-  }
-  .hero__text{ 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
-    
-  }
-  .hero__title{
-    color: $font-color-primary;
-    font-family: Inter;
-    font-weight: 800;
-  }
-  .hero__search{
-    display: flex;
-  }
-  .hero__image-el{
-    width: 70%;
-    height: auto;
-  }
+.hero {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh; 
+}
 
-  .events {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+.hero__text { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
 
-  }
+.hero__title {
+  color: $font-color-primary;
+  font-family: Inter;
+  font-weight: 800;
+}
 
-  .events__see-all {
+.hero__search {
+  display: flex;
+}
+
+.hero__image-el {
+  width: 70%;
+  height: auto;
+}
+
+.events {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events__see-all {
   background: none;
   color: $font-color-primary;
   font-family: Inter;
@@ -67,11 +67,85 @@
   border: none;
   cursor: pointer;
   transition: transform 0.15s ease, color 0.3s ease;
+
   &:hover {
     transform: translateY(px-to-rem(-2));
   }
 
   &:active {
     transform: translateY(0);
+  }
+}
+
+/* ===== Color Cards Section ===== */
+.cards-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.cards-section__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background-color: rgba($accent-card, 0.65); // pink-ish background, more transparent
+  border-radius: 2rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.cards-section__row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+}
+
+/* make all cards same size */
+.cards-section__row .color-card {
+  flex: 1;
+  max-width: 280px;
+  height: 13rem;
+}
+
+/* button inside the pink background and centered */
+.cards-section__button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.join-us-btn {
+  background: transparent;
+  border: 3px solid #FFD500; // yellow thick frame
+  color: #FFFFFF; // text in white
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.8rem 2.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background: rgba(255, 213, 0, 0.12);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 900px) {
+  .cards-section__row {
+    flex-direction: column;
+  }
+
+  .cards-section__row .color-card {
+    max-width: 100%;
   }
 }
