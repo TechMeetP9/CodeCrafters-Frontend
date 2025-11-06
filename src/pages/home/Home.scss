@@ -1,0 +1,54 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/functions.scss" as *;
+@use "../../styles/main.scss" as *;
+
+.home {
+  min-height: 100vh;
+  position: relative;
+  
+  .home-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 90px 0px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .page-title {
+      text-align: center;
+      font-size: 45px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 40px;
+      margin-top: 60px;
+    }
+
+    .loading,
+    .error,
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .error {
+      color: #ff6b6b;
+    }
+
+    .no-results {
+      color: #ffd93d;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .home-content {
+      padding: 40px 20px;
+      
+      .page-title {
+        font-size: 32px;
+        margin-top: 40px;
+      }
+    }
+  }
+}
