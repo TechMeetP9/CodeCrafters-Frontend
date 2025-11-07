@@ -5,7 +5,6 @@ import Home from "../pages/home/Home";
 import UserProfile from "../pages/userProfile/UserProfile";
 import EventDetail from '../pages/event/EventDetail'
 
-
 const EventDetailWrapper = () => {
   const { id } = useParams();
   return <EventDetailPage eventId={id} />;
