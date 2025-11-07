@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import GoButton from "../gobutton/gobutton";
 import "./searchbar.scss";
+import { useNavigate } from "react-router-dom";
 
 
 const SearchBar = () => {
     const [eventName, setEventName] = useState("");
     const [location, setLocation] = useState("");
+    const navigate = useNavigate();
   
     const handleSearch = () => {
       console.log("Buscando eventos con:", { eventName, location });
@@ -33,7 +35,7 @@ const SearchBar = () => {
         />
         
       </section>
-      <GoButton onClick={handleSearch} />
+      <GoButton onClick={()=> navigate("/home")} />
       </>
     );
   };
