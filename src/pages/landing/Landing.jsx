@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./landing.scss";
 import Background from "../../components/Background/background";
 import Navbar from "../../components/navbar/navbar";
@@ -8,6 +9,8 @@ import EventList from "../../components/eventlist/eventlist";
 import Footer from "../../components/footer/footer";
 import Whitebutton from "../../components/whitebutton/whitebutton";
 import ColorCard from "../../components/colorcard/colorcard";
+import SignUp from "../../components/signUp/SignUp";
+
 import bgImage from "../../assets/Card1.png";
 import iconSvg from "../../assets/fire.svg";
 import bgImage3 from "../../assets/Cardgreen.png";
@@ -16,6 +19,17 @@ import bgImage2 from "../../assets/card4.png";
 import iconSvg2 from "../../assets/offline.svg";
 
 const Landing = () => {
+  const navigate = useNavigate();
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+
+  const handleSeeAllEvents = () => {
+    navigate("/home");
+  };
+
+  const handleEventClick = () => {
+    window.open("/event-detail", "_blank");
+  };
+
   return (
     <div className="landing">
       <Background />
@@ -30,17 +44,12 @@ const Landing = () => {
               <SearchBar />
             </div>
             <div className="hero__cta">
-              <SignupButton variant="secondary">
+              <SignupButton
+                variant="secondary"
+                onClick={() => setIsSignUpOpen(true)}
+              >
                 Join us
               </SignupButton>
-              {/* Gabi: Esto es para el signup para Ana 
-                  <SignupButton
-                    variant="secondary"
-                    onClick={() => navigate("/join-us")}
-                  >
-                    Join us
-                  </SignupButton>
-              */}
             </div>
           </div>
 
@@ -55,11 +64,16 @@ const Landing = () => {
 
         <section className="events">
           <div className="events__header">
-            <button className="events__see-all">See all events</button>
+            <button
+              className="events__see-all"
+              onClick={handleSeeAllEvents}
+            >
+              See all events
+            </button>
           </div>
           <div className="events__card">
             <div className="events__grid">
-              <EventList />
+              <EventList onEventClick={handleEventClick} />
             </div>
           </div>
         </section>
@@ -85,13 +99,18 @@ const Landing = () => {
             </div>
 
             <div className="cards-section__button">
-              <SignupButton variant="secondary">
+              <SignupButton
+                variant="secondary"
+                onClick={() => setIsSignUpOpen(true)}
+              >
                 Join us
               </SignupButton>
             </div>
           </div>
         </section>
       </main>
+
+      <SignUp isOpen={isSignUpOpen} onClose={() => setIsSignUpOpen(false)} />
 
       <Footer />
     </div>
