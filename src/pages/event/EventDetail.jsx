@@ -7,7 +7,7 @@ const EventDetail = () => {
     title: "Hackemon -",
     subtitle: "36 hours hackathon",
     organizer: "by: She Codes",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex",
+    description: "Join us for an electrifying 36-hour coding adventure! Build innovative Pokémon-inspired apps, catch new skills, and compete for amazing prizes. Whether you're a coding Squirtle or a programming Charizard, all trainers are welcome!",
     image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&h=300&fit=crop", // Imagen de código/tech
     date: "Month, 11-13",
     time: "00h00 OCT",
@@ -49,12 +49,10 @@ const EventDetail = () => {
         <div className="event-details-section">
           <h3 className="section-title">Details</h3>
           <p className="section-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex et dolore magna 
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-            ut aliquip ex et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-            exercitation ullamco laboris nisi ut aliquip ex
+            Get ready to level up your coding skills in this epic Pokémon-themed hackathon! Over 36 hours, you'll team up with fellow trainers to create innovative applications inspired by the world of Pokémon.
+            Challenge yourself with exciting tracks including AI/ML creature recognition, AR battle systems, community trading platforms, and Pokédex data visualization. Work solo or form your dream team of up to 4 members.
+            We'll provide everything you need: free meals, snacks, energy drinks, WiFi, and mentorship from industry professionals. Plus, compete for incredible prizes including gaming gear, courses, and exclusive Pokémon merchandise!
+            No experience required - just bring your laptop, creativity, and passion for coding. Workshops and tutorials will be available throughout the event for beginners. Let's catch 'em all... bugs included!
           </p>
         </div>
 
