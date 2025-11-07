@@ -9,10 +9,14 @@ const EventCard = ({
   eventTime,
   eventCreator,
   eventAttendees,
+  onClick, 
 }) => {
   return (
-    <article className="event-card">
-      {/* 👇 ESTA clase tiene que llamarse igual que en tu SCSS */}
+    <article 
+      className="event-card"
+      onClick={onClick} 
+      style={{ cursor: onClick ? 'pointer' : 'default' }} 
+    >
       <div className="event-image">
         <img src={eventImage} alt={eventName} />
       </div>

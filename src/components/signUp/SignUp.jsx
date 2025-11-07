@@ -1,108 +1,161 @@
-import React, { useState } from 'react'
-import Modal from '../modal/Modal';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Modal from "../modal/Modal";
+// import { register } from "../../api/auth"; // Commented: backend connection
+// import { useUser } from "../../context/userContext";
+import "./SignUp.scss";
 
+function SignUp({ isOpen, onClose }) {
+  const navigate = useNavigate();
+  // const { loginUser } = useUser();
 
-function SignUp({ isOpen, onClose, onSignupSuccess }) {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    profileImage: null,
+  });
 
-    const signupUser = async (name, email, password) => {
-    const response = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
-    });
+  const [preview, setPreview] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-    if (!response.ok) {
-      const error = await response.json().catch(() => ({}));
-      throw new Error(error.message || "Signup failed");
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "profileImage") {
+      const file = files[0];
+      setFormData({ ...formData, profileImage: file });
+      setPreview(file ? URL.createObjectURL(file) : null);
+    } else {
+      setFormData({ ...formData, [name]: value });
     }
-
-    return response.json(); 
   };
 
   const handleSignup = async (e) => {
     e.preventDefault();
     setError("");
 
-    if (password !== confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       return;
     }
 
     setLoading(true);
+
     try {
-      const data = await signupUser(name, email, password);
+      // Commented backend part for demo only:
+
+      /*
+      const payload = new FormData();
+      payload.append("name", formData.name);
+      payload.append("username", formData.username);
+      payload.append("email", formData.email);
+      payload.append("password", formData.password);
+      if (formData.profileImage) payload.append("profile_image", formData.profileImage);
+
+      const data = await register(payload); // backend call
+
       localStorage.setItem("token", data.token);
-      if (onSignupSuccess) onSignupSuccess(data.user);
+      loginUser(data.user);
+      */
+
+      // Frontend demo only (no backend)
+      console.log("User signed up (demo):", formData);
+
       onClose();
-    } catch (err) {
-      setError(err.message || "Something went wrong");
+      navigate("/home");
+    } catch {
+      setError("Something went wrong");
     } finally {
       setLoading(false);
     }
   };
 
-
   return (
-    <Modal 
-      isOpen={isOpen} 
-      onClose={onClose} 
-      title="Sign Up">
-        <form className="login-form" onSubmit={handleSignup}>
+    <Modal isOpen={isOpen} onClose={onClose} title="Sign Up">
+      <form className="signup-form" onSubmit={handleSignup}>
         {error && <p className="error-msg">{error}</p>}
 
         <label>
-          Name
+          Name*
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
             required
           />
         </label>
 
         <label>
-          Email
+          Username*
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+        </label>
+
+        <label>
+          Email*
           <input
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             required
           />
         </label>
 
         <label>
-          Password
+          Password*
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
             required
           />
         </label>
 
         <label>
-          Confirm Password
+          Confirm Password*
           <input
             type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
             required
           />
         </label>
+
+        <label>
+          Profile Image
+          <input
+            type="file"
+            name="profileImage"
+            accept="image/*"
+            onChange={handleChange}
+          />
+        </label>
+
+        {preview && (
+          <figure className="preview-container">
+            <img src={preview} alt="Profile Preview" />
+            <figcaption>Preview</figcaption>
+          </figure>
+        )}
 
         <button type="submit" disabled={loading}>
           {loading ? "Creating account..." : "Sign Up"}
         </button>
       </form>
-
     </Modal>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;
