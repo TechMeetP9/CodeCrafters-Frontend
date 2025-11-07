@@ -3,7 +3,7 @@ import Background from '../../components/Background/background';
 import Navbar from '../../components/navbar/navbar';
 import UserCard from '../../components/userCard/userCard';
 import UserEditForm from '../../components/userEditForm/userEditForm';
-import { getUserById, updateUser } from '../../api/users';
+// import { getUserById, updateUser } from '../../api/users';
 import './userProfile.scss';
 
 function UserProfile({ userIdFromLogin }) {

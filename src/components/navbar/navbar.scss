@@ -47,10 +47,8 @@
     bottom: px-to-rem(27);
     left: 0;
     width: 100%;
-    height: px-to-rem(1.5);
-    background: $accent-card;
-    filter: blur(px-to-rem(1)); 
-    opacity: 0.6;
+    height: px-to-rem(2);
+    background: $accent-card; 
   }
 
 }

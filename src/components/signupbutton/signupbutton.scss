@@ -1,4 +1,4 @@
-@use "/src/styles/variables.scss" as *; 
+@use "/src/styles/variables.scss" as *;
 @use "/src/styles/functions.scss" as *;
 
 .signupbutton {
@@ -6,8 +6,8 @@
   align-items: center;
   justify-content: center;
 
-  padding: px-to-rem(7) px-to-rem(30); 
-  border: px-to-rem(4) solid $accent-primary; 
+  padding: px-to-rem(7) px-to-rem(30);
+  border: px-to-rem(4) solid $accent-primary;
   border-radius: px-to-rem(58);
   background-color: transparent;
 
@@ -25,5 +25,29 @@
 
   &:active {
     transform: translateY(0);
+  }
+
+  // 🔹 SECONDARY version (igual al original pero con marco secundario)
+  &.signupbutton--secondary {
+    border-color: $accent-secondary;
+    color: $font-color-primary;
+
+    // Texto dentro será "Join us"
+    // <SignupButton variant="secondary">Join us</SignupButton>
+
+    // 👉 futura ruta (por definir)
+    // onClick={() => navigate("/join-us")} 
+  }
+
+  // 🔸 THIRD version (“Start now”)
+  &.signupbutton--start {
+    border-color: $accent-primary;
+    color: $font-color-primary;
+
+    // Texto dentro será "Start now"
+    // <SignupButton variant="start">Start now</SignupButton>
+
+    // 👉 futura ruta (por definir)
+    // onClick={() => navigate("/start-now")}
   }
 }

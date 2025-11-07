@@ -1,47 +1,37 @@
 @use "./variables.scss" as *;
 @use "./functions.scss" as *;
+
+// Importar fuente de Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-// ----------------------------------------------------
-// 🌍 ESTILOS GLOBALES
-// ----------------------------------------------------
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+// Reset básico
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-// Aplica la fuente globalmente a todo el documento
-html, body {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  color: #fff;
-  background-color: #0f1119; // color base de fondo
-  min-height: 100%;
-}
-
+// Aplicar la fuente globalmente
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-// El contenedor principal de React (App)
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-// Hace que el contenido empuje el footer hacia abajo
-main {
-  flex: 1;
-}
-
-// Mejora de suavizado de texto
-body, button, input, textarea {
+  font-family: $font-primary;
+  background: $background-1;
+  color: $font-color-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+// Asegurar que todos los elementos usen la fuente
+body, button, input, textarea, select {
+  font-family: $font-primary;
+}
+
+// Estilos para el contenedor principal de la app
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
