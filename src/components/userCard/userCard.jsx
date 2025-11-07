@@ -1,6 +1,6 @@
     import React from "react";
     import { useNavigate } from "react-router-dom";
-    import { deleteUser } from "../../api/users";
+    // import { deleteUser } from "../../api/users";
 
     const UserCard = ({ user, onEdit }) => {
     const navigate = useNavigate();

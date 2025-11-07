@@ -3,13 +3,13 @@ import { useParams } from "react-router-dom";
 import Background from "../../components/Background/background";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
-import { getEventById } from "../../api/events";
-import {
+// import { getEventById } from "../../api/events";
+/* import {
   joinEvent,
   leaveEvent,
   getEventAttendees,
 } from "../../api/attendances";
-import "./event.scss";
+import "./event.scss"; */
 
 function Event() {
   const { id } = useParams();
