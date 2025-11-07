@@ -18,7 +18,6 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path="/events/:id" element={<EventDetailPageWrapper />} />
             <Route path="/home" element={<Homepage />} />
           </Routes>
         </main>
