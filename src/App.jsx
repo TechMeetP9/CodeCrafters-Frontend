@@ -4,21 +4,18 @@ import Home from './pages/home/Home';
 import EventDetail from './pages/event/EventDetail';
 import Header from './components/navbar/navbar';
 import Footer from './components/footer/footer';
+import Landing from './pages/landing/Landing'
+import AppRouter from './router/Router';
+
+// Wrapper para pasar el eventId desde la URL
+const EventDetailPageWrapper = () => {
+  const { id } = useParams();
+  return <EventDetailPage eventId={id} />;
+};
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/home-page" element={<Home />} />
-            <Route path="/event-detail" element={<EventDetail />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <AppRouter />
   );
 }
 
