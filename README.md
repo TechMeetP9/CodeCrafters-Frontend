@@ -7,7 +7,7 @@ This application aspires to become the virtual meeting point for professionals, 
 --- 
 
 # :camera: Pages
-** Landing (path "/")**
+**Landing (path "/")**
 
 <img width="1256" height="677" alt="Screenshot 2025-11-07 111442" src="https://github.com/user-attachments/assets/b71b699f-9fd1-4759-ac2a-5ae9b58f99ef" />
 
