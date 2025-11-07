@@ -57,8 +57,12 @@ const Landing = () => {
           <div className="events__header">
             <button className="events__see-all">See all events</button>
           </div>
-          <div className="events__grid">
-            <EventList />
+
+          {/* ⬇️ contenedor extra para ponerle el background/card */}
+          <div className="events__card">
+            <div className="events__grid">
+              <EventList />
+            </div>
           </div>
         </section>
 
@@ -83,7 +87,7 @@ const Landing = () => {
             </div>
 
             <div className="cards-section__button">
-            <SignupButton variant="secondary">
+              <SignupButton variant="secondary">
                 Join us
               </SignupButton>
             </div>
