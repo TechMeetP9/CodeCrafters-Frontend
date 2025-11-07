@@ -9,7 +9,7 @@ import Event5 from "../../assets/websummit.jpg";
 import Event6 from "../../assets/tech2.jpg";
 
 const HomeEventList = ({ searchQuery = '', currentPage = 1 }) => {
-  const ITEMS_PER_PAGE = 15; // 5 filas x 3 columnas
+  const ITEMS_PER_PAGE = 15; 
 
   const [allEvents] = useState([
     {
@@ -239,13 +239,12 @@ const HomeEventList = ({ searchQuery = '', currentPage = 1 }) => {
     },
   ]);
 
-  // Filtrar eventos por búsqueda
+
   const filteredEvents = allEvents.filter(event =>
     event.eventName.toLowerCase().includes(searchQuery.toLowerCase()) ||
     event.eventCreator.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Calcular eventos para la página actual
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const currentEvents = filteredEvents.slice(startIndex, endIndex);

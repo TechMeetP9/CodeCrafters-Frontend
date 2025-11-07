@@ -22,7 +22,7 @@ const SearchBar = () => {
           value={eventName}
           onChange={(e) => setEventName(e.target.value)}
           
-          size={Math.max(eventName.length, 12)} //para hacer el imput mas largo
+          size={Math.max(eventName.length, 12)} 
           className="search-bar__input"
         />
         <input

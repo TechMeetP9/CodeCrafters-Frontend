@@ -106,7 +106,7 @@ function Event() {
               className={`event__attend-btn ${isAttending ? "attending" : ""}`}
               onClick={handleAttend}
             >
-              {isAttending ? "✅ Leave Event" : "Attend Event"}
+              {isAttending ? "Leave Event" : "Attend Event"}
             </button>
             {message && <p className="event__message">{message}</p>}
           </div>

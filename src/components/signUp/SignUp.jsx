@@ -61,7 +61,6 @@ function SignUp({ isOpen, onClose }) {
       loginUser(data.user);
       */
 
-      // Frontend demo only (no backend)
       console.log("User signed up (demo):", formData);
 
       onClose();

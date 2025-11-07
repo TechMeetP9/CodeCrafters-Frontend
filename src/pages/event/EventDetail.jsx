@@ -29,7 +29,6 @@ const EventDetail = () => {
       
       <div className="event-detail-container">
         <div className="event-detail-card">
-          {/* Header Section */}
           <div className="event-header">
             <div className="event-header-content">
               <h1 className="event-title">{event.title}</h1>
@@ -51,7 +50,6 @@ const EventDetail = () => {
             </div>
           </div>
 
-          {/* Details Section */}
           <div className="event-details-section">
             <h3 className="section-title">Details</h3>
             <p className="section-text">
@@ -62,13 +60,13 @@ const EventDetail = () => {
             </p>
           </div>
 
-          {/* Location Section */}
+
           <div className="event-location-section">
             <h3 className="section-title">Location</h3>
             <p className="section-text">{event.location}</p>
           </div>
 
-          {/* Attendees Section */}
+
           <div className="event-attendees-section">
             <h3 className="section-title">Attendees</h3>
             <div className="attendees-content">

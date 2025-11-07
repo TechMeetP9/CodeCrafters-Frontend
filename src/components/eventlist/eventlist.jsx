@@ -106,7 +106,7 @@ const EventList = ({ onEventClick }) => { // Añadir la prop aquí
           eventTime={event.eventTime}
           eventCreator={event.eventCreator}
           eventAttendees={event.eventAttendees}
-          onClick={index === 0 ? onEventClick : undefined} // Solo la primera tarjeta
+          onClick={index === 0 ? onEventClick : undefined} 
         />
       ))}
     </section>

@@ -12,7 +12,6 @@ const ColorCard2 = ({
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    // Navega a la ruta /event-create
     navigate("/event-create");
   };
 
@@ -24,20 +23,17 @@ const ColorCard2 = ({
       <div className="color-card__overlay" />
 
       <div className="color-card__content">
-        {/* Imagen (mascot) */}
         {imageSrc && (
           <div className="color-card__image-wrapper">
             <img src={imageSrc} alt={title} className="color-card__image" />
           </div>
         )}
 
-        {/* Texto */}
         <div className="color-card__text-wrapper">
           {title && <h2 className="color-card__title">{title}</h2>}
           {text && <p className="color-card__text">{text}</p>}
         </div>
 
-        {/* Botón */}
         <div className="color-card__button-wrapper">
           <button
             className="color-card__button"

@@ -1,4 +1,3 @@
-// src/components/eventcard/EventCard.jsx
 import React from "react";
 import "./eventcard.scss";
 

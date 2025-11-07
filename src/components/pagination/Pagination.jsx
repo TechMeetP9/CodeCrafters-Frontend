@@ -18,7 +18,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     onPageChange(page);
   };
 
-  // Generar array de números de página
+
   const getPageNumbers = () => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -29,7 +29,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
   return (
     <div className="pagination">
-      {/* Botón Previous */}
       <button
         className={`pagination__arrow ${currentPage === 1 ? 'disabled' : ''}`}
         onClick={handlePrevious}
@@ -50,7 +49,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         </svg>
       </button>
 
-      {/* Números de página */}
       <div className="pagination__numbers">
         {getPageNumbers().map((page) => (
           <button
@@ -63,7 +61,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         ))}
       </div>
 
-      {/* Botón Next */}
       <button
         className={`pagination__arrow ${currentPage === totalPages ? 'disabled' : ''}`}
         onClick={handleNext}
