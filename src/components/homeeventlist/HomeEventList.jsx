@@ -7,9 +7,11 @@ import Event3 from "../../assets/barcelonacybersecuritycongress_logo_standard-re
 import Event4 from "../../assets/medtech.png";
 import Event5 from "../../assets/websummit.jpg";
 import Event6 from "../../assets/tech2.jpg";
+import { useNavigate } from "react-router-dom";
 
 const HomeEventList = ({ searchQuery = '', currentPage = 1 }) => {
   const ITEMS_PER_PAGE = 15; // 5 filas x 3 columnas
+  const navigate = useNavigate();
 
   const [allEvents] = useState([
     {
@@ -269,6 +271,7 @@ const HomeEventList = ({ searchQuery = '', currentPage = 1 }) => {
           eventTime={event.eventTime}
           eventCreator={event.eventCreator}
           eventAttendees={event.eventAttendees}
+          onClick={()=> navigate("/event-detail")}
         />
       ))}
     </section>
