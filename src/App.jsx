@@ -3,6 +3,8 @@ import './styles/main.scss';
 import EventDetail from './pages/event/EventDetail';
 import Header from './components/navbar/navbar';
 import Footer from './components/footer/footer';
+import Landing from './pages/landing/Landing'
+import AppRouter from './router/Router';
 
 // Wrapper para pasar el eventId desde la URL
 const EventDetailPageWrapper = () => {
@@ -12,17 +14,7 @@ const EventDetailPageWrapper = () => {
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/event-detail" element={<EventDetail />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <AppRouter />
   );
 }
 
