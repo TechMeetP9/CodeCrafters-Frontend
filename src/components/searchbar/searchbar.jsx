@@ -35,7 +35,7 @@ const SearchBar = () => {
         />
         
       </section>
-      <GoButton onClick={()=> navigate("/home")} />
+      <GoButton onClick={()=> navigate("/event-detail")} />
       </>
     );
   };
