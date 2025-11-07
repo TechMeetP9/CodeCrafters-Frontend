@@ -9,7 +9,7 @@ import Event4 from "../../assets/medtech.png";
 import Event5 from "../../assets/websummit.jpg";
 import Event6 from "../../assets/tech2.jpg";
 
-const EventList = () => {
+const EventList = ({ onEventClick }) => { // Añadir la prop aquí
   // // Gabi: esto he comentado es lo del backend
   /*
   const [events, setEvents] = useState([]);
@@ -97,7 +97,7 @@ const EventList = () => {
 
   return (
     <section className="event-list">
-      {mockEvents.map((event) => (
+      {mockEvents.map((event, index) => (
         <EventCard
           key={event.id}
           eventImage={event.eventImage}
@@ -106,6 +106,7 @@ const EventList = () => {
           eventTime={event.eventTime}
           eventCreator={event.eventCreator}
           eventAttendees={event.eventAttendees}
+          onClick={index === 0 ? onEventClick : undefined} // Solo la primera tarjeta
         />
       ))}
     </section>

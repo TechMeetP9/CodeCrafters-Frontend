@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import SearchBar from '../../components/searchbar/SearchBar';
+import Navbar from '../../components/navbar/navbar';
+import Footer from '../../components/footer/footer';
+import Background from '../../components/Background/background';
+import SearchBar from '../../components/searchbar/searchbar';
 import HomeEventList from '../../components/homeeventlist/HomeEventList';
 import Pagination from '../../components/pagination/Pagination';
 import './Home.scss';
@@ -20,23 +23,30 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      <div className="home-header">
-        <h1 className="home-title">Search Tech Events</h1>
-        <SearchBar onSearch={handleSearch} />
-      </div>
+      <Background />
+      <Navbar />
       
-      <div className="home-content">
-        <HomeEventList 
-          searchQuery={searchQuery} 
+      <div className="home-content-wrapper">
+        <div className="home-header">
+          <h1 className="home-title">Search Tech Events</h1>
+          <SearchBar onSearch={handleSearch} />
+        </div>
+        
+        <div className="home-content">
+          <HomeEventList 
+            searchQuery={searchQuery} 
+            currentPage={currentPage}
+          />
+        </div>
+
+        <Pagination 
           currentPage={currentPage}
+          totalPages={5}
+          onPageChange={handlePageChange}
         />
       </div>
 
-      <Pagination 
-        currentPage={currentPage}
-        totalPages={5}
-        onPageChange={handlePageChange}
-      />
+      <Footer />
     </div>
   );
 };
