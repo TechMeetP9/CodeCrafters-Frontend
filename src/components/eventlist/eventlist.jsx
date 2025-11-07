@@ -1,9 +1,7 @@
 import React, { useState /*, useEffect */ } from "react";
 import EventCard from "../eventcard/eventcard";
-// import { getAllEvents } from "../../api/events"; // 🔒 backend comentado
+// import { getAllEvents } from "../../api/events";//
 import "./eventlist.scss";
-
-// 🖼️ Importa tus imágenes locales (evita espacios en los nombres de archivo)
 import Event1 from "../../assets/pokemonart.jpg";
 import Event2 from "../../assets/tech1.jpg";
 import Event3 from "../../assets/barcelonacybersecuritycongress_logo_standard-removebg-preview.png";
@@ -12,7 +10,7 @@ import Event5 from "../../assets/websummit.jpg";
 import Event6 from "../../assets/tech2.jpg";
 
 const EventList = () => {
-  // 🔒 Estados y useEffect del backend comentados
+  // // Gabi: esto he comentado es lo del backend
   /*
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -34,8 +32,6 @@ const EventList = () => {
     fetchEvents();
   }, []);
   */
-
-  // 🎨 Mock de 6 eventos de prueba (para maquetar sin backend)
   const [mockEvents] = useState([
     {
       id: 1,
@@ -93,13 +89,12 @@ const EventList = () => {
     },
   ]);
 
-  // 🔒 Antiguos returns del backend
+  // Gabi: esto he comentado es lo del backend
   // if (loading) return <p className="eventlist__status">Loading events...</p>;
   // if (error) return <p className="eventlist__status error">{error}</p>;
   // if (events.length === 0)
-  //   return <p className="eventlist__status">No events available yet.</p>;
+  // return <p className="eventlist__status">No events available yet.</p>;
 
-  // 👉 Return de maqueta (mock)
   return (
     <section className="event-list">
       {mockEvents.map((event) => (

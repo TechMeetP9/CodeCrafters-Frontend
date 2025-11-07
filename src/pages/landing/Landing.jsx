@@ -33,7 +33,7 @@ const Landing = () => {
               <SignupButton variant="secondary">
                 Join us
               </SignupButton>
-              {/* para cuando este listo el signup de Ana
+              {/* Gabi: Esto es para el signup para Ana 
                   <SignupButton
                     variant="secondary"
                     onClick={() => navigate("/join-us")}
@@ -57,8 +57,6 @@ const Landing = () => {
           <div className="events__header">
             <button className="events__see-all">See all events</button>
           </div>
-
-          {/* ⬇️ contenedor extra para ponerle el background/card */}
           <div className="events__card">
             <div className="events__grid">
               <EventList />
