@@ -8,6 +8,7 @@ import Event3 from "../../assets/barcelonacybersecuritycongress_logo_standard-re
 import Event4 from "../../assets/medtech.png";
 import Event5 from "../../assets/websummit.jpg";
 import Event6 from "../../assets/tech2.jpg";
+import { useNavigate } from "react-router-dom";
 
 const EventList = ({ onEventClick }) => { // Añadir la prop aquí
   // // Gabi: esto he comentado es lo del backend
@@ -32,6 +33,8 @@ const EventList = ({ onEventClick }) => { // Añadir la prop aquí
     fetchEvents();
   }, []);
   */
+
+  const navigate = useNavigate();
   const [mockEvents] = useState([
     {
       id: 1,
@@ -106,7 +109,7 @@ const EventList = ({ onEventClick }) => { // Añadir la prop aquí
           eventTime={event.eventTime}
           eventCreator={event.eventCreator}
           eventAttendees={event.eventAttendees}
-          onClick={index === 0 ? onEventClick : undefined} 
+          onClick={()=> navigate("/event-detail")} // Solo la primera tarjeta
         />
       ))}
     </section>
