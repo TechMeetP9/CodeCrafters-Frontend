@@ -1,0 +1,29 @@
+@use "sass:color";
+@use "/src/styles/variables.scss" as *; 
+@use "/src/styles/functions.scss" as *;
+@use "../../styles/main.scss" as *;
+
+.whitebutton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: px-to-rem(18);
+  font-weight: $font-weight-black;
+  color: $font-color-primary;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  transition: transform 0.15s ease, color 0.3s ease;
+
+  &:hover {
+    transform: translateY(px-to-rem(-2));
+    color: color.adjust($font-color-primary, $lightness: 10%);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,54 @@
+@use "/src/styles/variables.scss" as *; 
+@use "/src/styles/functions.scss" as *;
+@use "../../styles/main.scss" as *;
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: px-to-rem(24) px-to-rem(48);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 10;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: px-to-rem(12);
+
+    .navbar__logo {
+      height: px-to-rem(100);
+      width: auto;
+    }
+    &:hover {
+        transform: translateY(px-to-rem(-2));
+      }
+    
+      &:active {
+        transform: translateY(0);
+      }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: px-to-rem(28); 
+    .signupbutton {
+      margin-left: px-to-rem(8);
+      margin-right: px-to-rem(95);
+    }
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: px-to-rem(27);
+    left: 0;
+    width: 100%;
+    height: px-to-rem(2);
+    background: $accent-card; 
+  }
+
+}

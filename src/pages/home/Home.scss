@@ -1,0 +1,41 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/functions.scss" as *;
+
+.home-page {
+  min-height: 100vh;
+  padding-top: 6rem; 
+  background: linear-gradient(135deg, $background-1 0%, #1a1d2e 100%);
+  padding-bottom: 3rem;
+
+  @media (min-width: 768px) {
+    padding-top: 8rem;
+  }
+}
+
+.home-header {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .home-title {
+    font-size: 2.5rem;
+    font-weight: $font-weight-bold;
+    color: $font-color-primary;
+    margin-bottom: 2rem;
+    font-family: $font-primary;
+
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+  }
+}
+
+.home-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}

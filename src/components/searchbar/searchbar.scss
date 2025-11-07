@@ -1,0 +1,154 @@
+    @use "/src/styles/variables.scss" as *;
+    @use "/src/styles/functions.scss" as *;
+
+    .search-bar {
+    display: flex; 
+    height: 50px;
+    background: transparent;
+    border: px-to-rem(4) solid $accent-primary;
+    border-radius: px-to-rem(58);
+    padding: 9px;
+    width: min(90vw, px-to-rem(500));     
+    box-sizing: border-box;
+    overflow: visible; 
+    gap: px-to-rem(8);
+    }
+
+    .search-bar__input {
+    flex: 1 1 auto; 
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: px-to-rem(48);
+    height: aut;
+    padding: px-to-rem(1) px-to-rem(8);
+    font-size: px-to-rem(16);
+    color: $font-color-secondary;
+    outline: none;
+    line-height: 1.2;
+    }
+
+    .search-bar__input::placeholder {
+    color: rgba($font-color-secondary, 0.5);
+    font-weight: 600;
+    }
+
+
+    .search-bar > button,
+    .search-bar .go-button {
+    
+    right: -px-to-rem(52); 
+    transform: translateY(-50%);
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    cursor: pointer;
+    z-index: 1;
+    }
+
+    
+@media (max-width: 1024px) {
+    
+    .hero__image {
+      display: none;
+    }
+  
+    
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+  
+    .hero__text {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  
+    .hero__title {
+      font-size: 2.2rem;
+    }
+  
+    .hero__search {
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .hero__cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+  
+    
+    .events__card,
+    .cards-section__wrapper {
+      max-width: 90%;
+    }
+  
+    .events__header {
+      max-width: 90%;
+    }
+  }
+  
+  /* 🔹 Móviles grandes */
+  @media (max-width: 768px) {
+    .hero__image {
+      display: none;
+    }
+  
+    .hero__title {
+      font-size: 1.9rem;
+    }
+  
+    .hero__text {
+      padding: 0 1rem;
+    }
+  
+    .hero__cta {
+      margin-top: 1rem;
+    }
+  
+    .events__card,
+    .cards-section__wrapper {
+      width: 100%;
+      max-width: 100%;
+      padding: 1rem;
+    }
+  
+    .events__header {
+      width: 100%;
+      max-width: 100%;
+      justify-content: flex-end;
+      padding-right: 1rem;
+    }
+  }
+  
+  /* 🔻 Móviles pequeños */
+  @media (max-width: 480px) {
+    .hero__title {
+      font-size: 1.6rem;
+      line-height: 1.2;
+    }
+  
+    .hero__search {
+      width: 100%;
+    }
+  
+    .hero__cta {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .events__card,
+    .cards-section__wrapper {
+      padding: 0.8rem;
+      border-width: 3px;
+    }
+  
+    .events__header {
+      padding-right: 0.5rem;
+    }
+  }

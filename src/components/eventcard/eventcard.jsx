@@ -1,0 +1,37 @@
+import React from "react";
+import "./eventcard.scss";
+
+const EventCard = ({
+  eventImage,
+  eventName,
+  eventDate,
+  eventTime,
+  eventCreator,
+  eventAttendees,
+  onClick, 
+}) => {
+  return (
+    <article 
+      className="event-card"
+      onClick={onClick} 
+      style={{ cursor: onClick ? 'pointer' : 'default' }} 
+    >
+      <div className="event-image">
+        <img src={eventImage} alt={eventName} />
+      </div>
+
+      <div className="event-info">
+        <p className="event-date">
+          {eventDate} · {eventTime}
+        </p>
+        <h3 className="event-title">{eventName}</h3>
+        <p className="event-creator">{eventCreator}</p>
+        <p className="event-attendees">
+          {eventAttendees} attendees
+        </p>
+      </div>
+    </article>
+  );
+};
+
+export default EventCard;

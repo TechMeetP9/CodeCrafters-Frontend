@@ -1,0 +1,30 @@
+.event {
+  &__actions {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  &__attend-btn {
+    background-color: #ff6f3c;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color: #ff8b60;
+    }
+
+    &.attending {
+      background-color: #4caf50;
+    }
+  }
+
+  &__message {
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+}
