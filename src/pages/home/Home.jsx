@@ -1,33 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import Background from '../../components/Background/background';
-import Searchbar from '../../components/searchbar/searchbar';
-import EventGrid from '../../components/eventgrid/EventGrid';
+import React, { useState } from 'react';
+import SearchBar from '../../components/searchbar/SearchBar';
+import HomeEventList from '../../components/homeeventlist/HomeEventList';
 import Pagination from '../../components/pagination/Pagination';
-import { getAllEvents } from '../../api/events';
 import './Home.scss';
 
-function Home() {
-  const [searchQuery, setSearchQuery] = useState('');
+const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalEvents, setTotalEvents] = useState(0);
-  const eventsPerPage = 15;
-
-  useEffect(() => {
-    const fetchTotalEvents = async () => {
-      try {
-        const data = await getAllEvents();
-        setTotalEvents(data.length);
-      } catch (err) {
-        console.error('Error fetching events:', err);
-      }
-    };
-
-    fetchTotalEvents();
-  }, []);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-    setCurrentPage(1);
+    setCurrentPage(1); 
   };
 
   const handlePageChange = (page) => {
@@ -35,31 +18,27 @@ function Home() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const totalPages = Math.ceil(totalEvents / eventsPerPage);
-
   return (
-    <section className='home'>
-      <Background />
+    <div className="home-page">
+      <div className="home-header">
+        <h1 className="home-title">Search Tech Events</h1>
+        <SearchBar onSearch={handleSearch} />
+      </div>
       
-      <main className='home-content'>
-        <h1 className='page-title'>Search Tech Events</h1>
-        <Searchbar onSearch={handleSearch} />
-        
-        <EventGrid 
+      <div className="home-content">
+        <HomeEventList 
           searchQuery={searchQuery} 
-          currentPage={currentPage} 
+          currentPage={currentPage}
         />
-        
-        {totalPages > 1 && (
-          <Pagination 
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        )}
-      </main>
-    </section>
+      </div>
+
+      <Pagination 
+        currentPage={currentPage}
+        totalPages={5}
+        onPageChange={handlePageChange}
+      />
+    </div>
   );
-}
+};
 
 export default Home;
