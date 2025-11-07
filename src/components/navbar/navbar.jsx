@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./navbar.scss";
 import Whitebutton from "../whitebutton/whitebutton";
 import Signupbutton from "../signupbutton/signupbutton";
@@ -8,9 +9,8 @@ import SignUp from "../signUp/SignUp";
 const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null); // 
 
-  // scroll function for "About us"
   const handleScrollToAbout = () => {
     const section = document.getElementById("about-us");
     if (section) {
@@ -27,11 +27,13 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="navbar__brand">
-          <img
-            src="/src/assets/logo.png"
-            alt="Code Happen logo"
-            className="navbar__logo"
-          />
+          <Link to="/home">
+            <img
+              src="/src/assets/logo.png"
+              alt="Code Happen logo"
+              className="navbar__logo"
+            />
+          </Link>
         </div>
 
         <div className="navbar__menu">
@@ -42,7 +44,6 @@ const Navbar = () => {
               onClick={item.onClick}
             />
           ))}
-
           <Signupbutton text="Sign up" onClick={() => setShowSignup(true)} />
         </div>
       </nav>
@@ -50,8 +51,8 @@ const Navbar = () => {
       <Login
         isOpen={showLogin}
         onClose={() => setShowLogin(false)}
-        onLoginSuccess={(u) => {
-          setUser(u);
+        onLoginSuccess={() => {
+          // setUser(u);
           setShowLogin(false);
         }}
       />
@@ -59,8 +60,8 @@ const Navbar = () => {
       <SignUp
         isOpen={showSignup}
         onClose={() => setShowSignup(false)}
-        onSignupSuccess={(u) => {
-          setUser(u);
+        onSignupSuccess={() => {
+          // setUser(u);
           setShowSignup(false);
         }}
       />
