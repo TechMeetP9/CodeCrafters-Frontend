@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
-import EventDetailPage from './pages/event/EventDetailPage';
+import './styles/main.scss';
+import EventDetail from './pages/event/EventDetail';
 import Header from './components/navbar/navbar';
 import Footer from './components/footer/footer';
 
@@ -16,7 +17,7 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path="/events/:id" element={<EventDetailPageWrapper />} />
+            <Route path="/event-detail" element={<EventDetail />} />
           </Routes>
         </main>
         <Footer />
