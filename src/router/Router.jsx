@@ -1,9 +1,15 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import EventCreation from "../pages/eventCreation/EventCreation";
 import Landing from "../pages/landing/Landing";
 import Home from "../pages/home/Home";
-import Event from "../pages/event/Event";
+import EventDetailPage from "../pages/event/EventDetailPage"; 
 import UserProfile from "../pages/userProfile/UserProfile";
+
+
+const EventDetailWrapper = () => {
+  const { id } = useParams();
+  return <EventDetailPage eventId={id} />;
+};
 
 function AppRouter() {
   return (
@@ -11,7 +17,7 @@ function AppRouter() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/home/:id" element={<Event />} />
+        <Route path="/events/:id" element={<EventDetailWrapper />} /> {/* 👈 detalle */}
         <Route path="/event-create" element={<EventCreation />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="*" element={<div>Page not found</div>} />

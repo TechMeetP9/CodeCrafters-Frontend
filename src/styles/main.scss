@@ -1,4 +1,37 @@
 @use "./variables.scss" as *;
 @use "./functions.scss" as *;
+
+// Importar fuente de Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-// revisar reglas de import 
+
+// Reset básico
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Aplicar la fuente globalmente
+body {
+  font-family: $font-primary;
+  background: $background-1;
+  color: $font-color-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Asegurar que todos los elementos usen la fuente
+body, button, input, textarea, select {
+  font-family: $font-primary;
+}
+
+// Estilos para el contenedor principal de la app
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
